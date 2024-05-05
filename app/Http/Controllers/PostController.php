@@ -46,7 +46,7 @@ class PostController extends Controller
         $post->user_id =auth()->user()->id;
         //データベースに追加してcreateビューに飛ばす
         $post->save();
-        return redirect()->route('post.create');
+        return redirect()->route('post.create')->with('message','投稿を作成・保存しました');
     }
 
     /**

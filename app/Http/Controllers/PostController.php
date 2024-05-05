@@ -37,7 +37,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //クラスからインスタンスを作成
+        $post = new Post();
+        //インスタンスにrequestで飛んできた値を入れ込む
+        $post->title = $request->title;
+        $post->body = $request->body;
+        //user_idに関しては、今ログインしているidをコントローラー側で仕込めば便利
+        $post->user_id =auth()->user()->id;
+        //データベースに追加してcreateビューに飛ばす
+        $post->save();
+        return redirect()->route('post.create');
     }
 
     /**

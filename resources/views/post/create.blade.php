@@ -7,9 +7,8 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             投稿の新規作成
         </h2>
-        @if(session('message'))
-        {{session('message')}}
-        @endif
+        <!--メッセージコンポネントと変数 -->
+        <x-amessage :message="session('message')" />
     </x-slot>
 
 

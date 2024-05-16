@@ -11,9 +11,14 @@ class Message extends Component
      *
      * @return void
      */
-    public function __construct()
+    public $message;
+
+     //引数にメッセージをもたせて__construct
+     //この$message
+    public function __construct($message)
     {
         //
+        $this->message = $message;
     }
 
     /**

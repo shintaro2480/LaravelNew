@@ -9,6 +9,7 @@
         </h2>
         <!--メッセージコンポネントと変数 -->
         <x-amessage :message="session('message')" />
+        <x-input-error class="mb-4" :messages="$errors->all()" />
     </x-slot>
 
 

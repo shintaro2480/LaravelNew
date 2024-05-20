@@ -25,6 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        
         //単にpost/create.blade.phpを表示させる
         return view('post.create');
     }
@@ -37,11 +38,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        //requestのvalidateメソッドを使う形で、validateを行う
+        $inputs=request()->validate(
+            [
+                'title'=>'required|max:255',
+                'body'=>'required|max:1000',
+                'image'=>'image|max:1024'
+            ]);
+        
         //クラスからインスタンスを作成
         $post = new Post();
         //インスタンスにrequestで飛んできた値を入れ込む
-        $post->title = $request->title;
-        $post->body = $request->body;
+        $post->title = $inputs['title'];
+        $post->body = $inputs['body'];
         //user_idに関しては、今ログインしているidをコントローラー側で仕込めば便利
         $post->user_id =auth()->user()->id;
         //データベースに追加してcreateビューに飛ばす

@@ -8,8 +8,9 @@
             投稿の新規作成
         </h2>
         <!--メッセージコンポネントと変数 -->
-        <x-amessage :message="session('message')" />
-        <x-input-error class="mb-4" :messages="$errors->all()" />
+
+        <x-validation-errors class="mb-4" :errors="$errors" />
+        <x-message :message="session('message')" />
     </x-slot>
 
 
@@ -30,7 +31,7 @@
                 </div>
 
                 <div class="w-full flex flex-col">
-                    <label for="image" class="font-semibold leading-none mt-4">画像 </label>
+                    <label for="image" class="font-semibold leading-none mt-4">画像(1MBまで) </label>
                     <div>
                     <input id="image" type="file" name="image">
                     </div>

@@ -20,13 +20,13 @@
                 <div class="md:flex items-center mt-8">
                     <div class="w-full flex flex-col">
                     <label for="title" class="font-semibold leading-none mt-4">件名</label>
-                    <input type="text" name="title" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="title" placeholder="Enter Title">
+                    <input type="text" name="title" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="title" value="{{old('title')}}" placeholder="件名を入力してください">
                     </div>
                 </div>
 
                 <div class="w-full flex flex-col">
                     <label for="body" class="font-semibold leading-none mt-4">本文</label>
-                    <textarea name="body" class="w-auto py-2 border border-gray-300 rounded-md" id="body" cols="30" rows="10"></textarea>
+                    <textarea name="body" class="w-auto py-2 border border-gray-300 rounded-md" id="body" cols="30" rows="10">{{old('body')}}</textarea>
                 </div>
 
                 <div class="w-full flex flex-col">

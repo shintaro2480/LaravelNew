@@ -54,6 +54,17 @@ class PostController extends Controller
         //user_idに関しては、今ログインしているidをコントローラー側で仕込めば便利
         $post->user_id =auth()->user()->id;
         //データベースに追加してcreateビューに飛ばす
+
+        //画像送信用
+        if (request('image')){
+            //画像のオリジナルネームを取得
+            $original = request()->file('image')->getClientOriginalName();
+            //画像をstorage/imageに保存。名前はのこす
+            $name = date('Ymd_His').'_'.$original;
+            request()->file('image')->move('storage/images',$name);
+            //Postインスタンス内にも、画像の名前でテキストを入れ込む
+            $post->image = $name;
+        }
         $post->save();
         return redirect()->route('post.create')->with('message','投稿を作成・保存しました');
     }
